@@ -8,7 +8,7 @@
   # Deep Learning Framework for Multi-modal Emotion Recognition in Mental Health Monitoring
 
   <p align="center">
-    A cutting-edge deep learning framework integrating text, audio, and video for emotion recognition.
+    A deep learning framework integrating text, audio, and video for emotion recognition.
     <br />
     <strong>Paper submitted for publication.</strong>
     <br />
