@@ -92,7 +92,7 @@ The system achieves **88.31% accuracy, 76.43% F1-score on IEMOCAP**, and **65.2%
 ## Model Architecture
 
 <p align="center">
-  <img src="figs/model_archi1.jpg" width="800" alt="MMER Architecture" />
+  <img src="figures/model_archi1.jpg" width="800" alt="MMER Architecture" />
 </p>
 
 ## Experimental Results
@@ -106,7 +106,7 @@ The system achieves **88.31% accuracy, 76.43% F1-score on IEMOCAP**, and **65.2%
 #### Confusion Matrix
 
 <p align="center">
-  <img src="figs/confusion matrix.png" width="600" alt="Confusion Matrix IEMOCAP" />
+  <img src="figures/confusion matrix.png" width="600" alt="Confusion Matrix IEMOCAP" />
 </p>
 
 ### CMU-MOSEI Dataset
@@ -118,7 +118,7 @@ The system achieves **88.31% accuracy, 76.43% F1-score on IEMOCAP**, and **65.2%
 #### Confusion Matrix
 
 <p align="center">
-  <img src="figs/confusionmatrixmosei.png" width="600" alt="Confusion Matrix CMU-MOSEI" />
+  <img src="figures/confusionmatrixmosei.png" width="600" alt="Confusion Matrix CMU-MOSEI" />
 </p>
 
 ## Comparison with State-of-the-Art
