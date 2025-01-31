@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/alaaNfissi/Multi-Modal-Emotion-Recognition">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="figures/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   # Deep Learning Framework for Multi-modal Emotion Recognition in Mental Health Monitoring
