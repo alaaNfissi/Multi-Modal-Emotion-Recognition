@@ -10,7 +10,7 @@ from tqdm import tqdm
 from utils.data_utils import get_dataset_iemocap, collate_fn, get_dataset_mosei
 from models.model import MODEL
 from trainers.trainer_definitions import EmoTrainer
-from utils.loss_functions import FocalLoss
+from utils.loss_functions import FocalLoss, FocalLossBCE
 
 
 if __name__ == "__main__":
@@ -178,8 +178,11 @@ if __name__ == "__main__":
         criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
     elif args['loss'] == 'focal':
         class_weights = train_dataset.getClassWeight()
-        print(class_weights)
-        criterion = FocalLoss(alpha=torch.FloatTensor(class_weights), gamma=2)
+        
+        if args['dataqset']=='iemocap':
+            criterion = FocalLoss(alpha=torch.FloatTensor(class_weights), gamma=2)
+        else:
+            criterion = FocalLossBCE(alpha=torch.FloatTensor(class_weights), gamma=2)
 
     if args['dataset'] in ['iemocap', 'mosei']:
         dataloader = dataloaders['train']

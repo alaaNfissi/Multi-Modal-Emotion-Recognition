@@ -138,7 +138,7 @@ class EmoTrainer(TrainerBase):
         elif  self.args['dataset']=='mosei':  
             self.eval_func = eval_mosei
 
-        if self.args['loss'] == 'bce' or 'focal':
+        if self.args['loss'] == 'bce' or 'focalloss':
             self.headers = [
                 ['phase (acc)', *annotations, 'average'],
                 ['phase (recall)', *annotations, 'average'],
@@ -162,6 +162,7 @@ class EmoTrainer(TrainerBase):
 
         Returns:
             None
+
         """
         for epoch in range(1, self.args['epochs'] + 1):
             print(f'=== Epoch {epoch} ===')
@@ -177,23 +178,8 @@ class EmoTrainer(TrainerBase):
             self.all_valid_stats.append(valid_stats)
             self.all_test_stats.append(test_stats)
 
-            if self.args['loss'] == 'ce' or self.args['loss'] == 'focalloss':
-                train_stats_str = [f'{s:.4f}' for s in train_stats]
-                valid_stats_str = [f'{s:.4f}' for s in valid_stats]
-                test_stats_str = [f'{s:.4f}' for s in test_stats]
-                print(tabulate([
-                    ['Train', *train_stats_str],
-                    ['Valid', *valid_stats_str],
-                    ['Test', *test_stats_str]
-                ], headers=self.header))
-                if valid_stats[-1] > self.best_valid_stats[-1]:
-                    self.best_valid_stats = valid_stats
-                    self.best_epoch = epoch
-                    self.earlyStop = self.args['early_stop']
-                else:
-                    self.earlyStop -= 1
-            else:
-                for i in range(len(self.headers)):
+            
+            for i in range(len(self.headers)):
                     for j in range(len(valid_stats[i])):
                         is_pivot = (i == 3 and j == (len(valid_stats[i]) - 1))
                         if valid_stats[i][j] > self.best_valid_stats[i][j]:
@@ -220,12 +206,7 @@ class EmoTrainer(TrainerBase):
                     ], headers=self.headers[i]))
 
         print('=== Best performance ===')
-        if self.args['loss'] == 'ce':
-            print(tabulate([
-                [f'Test ({self.best_epoch})', *self.all_test_stats[self.best_epoch - 1]]
-            ], headers=self.header))
-        else:
-            for i in range(len(self.headers)):
+        for i in range(len(self.headers)):
                 print(tabulate([[f'Test ({self.best_epoch})', *self.all_test_stats[self.best_epoch - 1][i]]], headers=self.headers[i]))
 
         self.save_stats(self.args['model_name'])
@@ -289,8 +270,7 @@ class EmoTrainer(TrainerBase):
             else:
                 imgs = imgs.to(device=self.device)
 
-            if self.args['loss'] == 'ce':
-                Y = Y.argmax(-1)
+          
 
             waveforms = waveforms.to(device=self.device)
             text = text.to(device=self.device)
@@ -354,8 +334,7 @@ class EmoTrainer(TrainerBase):
             else:
                 imgs = imgs.to(device=self.device)
 
-            if self.args['loss'] == 'ce':
-                Y = Y.argmax(-1)
+            
 
             waveforms = waveforms.to(device=self.device)
             text = text.to(device=self.device)
