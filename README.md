@@ -267,6 +267,7 @@ multi-modal-emotion-recognition/
 │   └── transformers_module.py
 ├── tests/                    # Unit tests (optional)
 ├── .gitignore               # Git ignore file
+├── IEMOCAP_data.ipynb
 ├── LICENSE
 ├── main.py                  # Main entry point
 ├── README.md
