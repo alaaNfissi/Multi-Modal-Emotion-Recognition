@@ -340,12 +340,3 @@ use and modify the code, without warranty, so long as you provide attribution
 to the authors. See `LICENSE.md` for the full license text.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
-
-<!-- CONTACT -->
-## Contact
-
-Alaa Nfissi - [@LinkedIn](https://www.linkedin.com/in/alaa-nfissi/) - alaa.nfissi@mail.concordia.ca
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
